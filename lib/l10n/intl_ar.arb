@@ -1,0 +1,29 @@
+{
+  "login": "Login",
+  "register": "register",
+  "noInternetConnection" : "No internet connection",
+  "appName": "Task Manager App",
+  "offlineMode" :"you are using offline mode",
+  "offline" :"offline",
+  "onlineMode": "you are using online mode",
+  "online":"online",
+  "validationMessage": "not valid",
+  "userName" : "اسم المستخدم",
+  "password" : "password",
+  "todo": "todo : ",
+  "isCompleted" :"is completed : ",
+  "save" :"Save",
+  "add" :"Add",
+  "reload" :"reload",
+  "pressTwiceToExit" :"Press Twice To Exit",
+  "registerWelcomeMessage" :"يا مرحبا ! سجل حساب جديد",
+  "loginWelcomeMessage" :"يا مرحبا ! سجل دخول",
+  "forgotPassword" :"نسيت كلمة المرور؟",
+
+  "or": "أو"
+
+
+
+
+
+}
