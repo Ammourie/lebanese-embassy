@@ -47,7 +47,7 @@ class CustomTextField extends StatelessWidget {
       {Key? key,
       this.textKey,
       this.initialValue,
-      this.isEditeStyle=false,
+      this.isEditeStyle = false,
       this.isRtl,
       this.width,
       this.fillColor,
@@ -56,10 +56,10 @@ class CustomTextField extends StatelessWidget {
       this.isPhone = false,
       this.justLatinLetters = false,
       this.contentPaddig,
-       this.textStyle,
+      this.textStyle,
       this.inputBorder,
       this.errorBorder,
-        this.controller,
+      this.controller,
       this.borderFocus,
       required this.textInputAction,
       required this.keyboardType,
@@ -85,52 +85,43 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var border =
-        isEditeStyle?
-        UnderlineInputBorder(
+    var border = isEditeStyle
+        ? UnderlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.r)),
             borderSide: BorderSide(color: Styles.colorBorderTextField))
-            :
-    OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.r)),
-        borderSide: BorderSide(color: Styles.colorBorderTextField));
-    var focusborder =
+        : OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.r)),
+            borderSide: BorderSide(color: Styles.colorBorderTextField));
+    var focusborder = isEditeStyle
+        ? UnderlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.r)),
+            borderSide: BorderSide(color: Styles.colorPrimary))
+        : OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.r)),
+            borderSide: BorderSide(color: Styles.colorPrimary));
 
-    isEditeStyle?
-    UnderlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.r)),
-        borderSide: BorderSide(color: Styles.colorPrimary))
-        :
-    OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.r)),
-        borderSide: BorderSide(color: Styles.colorPrimary));
-
-    var errorBord =
-    isEditeStyle?
-    UnderlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.r)),
-        borderSide: BorderSide(color: Colors.red))
-        :
-    OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.r)),
-        borderSide: BorderSide(color: Colors.red));
+    var errorBord = isEditeStyle
+        ? UnderlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.r)),
+            borderSide: BorderSide(color: Colors.red))
+        : OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.r)),
+            borderSide: BorderSide(color: Colors.red));
     return Container(
       alignment: Alignment.center,
-
-      height: textKey?.currentState == null
-          ? height
-          : textKey?.currentState!.errorText == null
-              ? height
-              : height! * 1.5,
+      // height: textKey?.currentState == null
+      //     ? height
+      //     : textKey?.currentState!.errorText == null
+      //         ? height
+      //         : height! * 1.5,
       width: width,
       child: Center(
           child: TextFormField(
-
-            initialValue:initialValue,
+        initialValue: initialValue,
         maxLines: maxLines,
         enabled: enabled,
-        ignorePointers:readonly ,
-        readOnly: readonly??false,
+        ignorePointers: readonly,
+        readOnly: readonly ?? false,
         key: textKey,
 
         textAlign: textAlign,
@@ -141,8 +132,8 @@ class CustomTextField extends StatelessWidget {
         autocorrect: false,
         style: textStyle,
         controller: controller,
-        textInputAction:TextInputAction.next,
-            // textInputAction,
+        textInputAction: TextInputAction.next,
+        // textInputAction,
         keyboardType: keyboardType,
         focusNode: focusNode,
         decoration: inputDecoration ??
@@ -150,7 +141,6 @@ class CustomTextField extends StatelessWidget {
                 // filled: true,
                 // labelText: labelText ,
                 hintText: hintText,
-
                 errorMaxLines: 1,
                 errorText: textKey?.currentState == null
                     ? null
@@ -172,10 +162,11 @@ class CustomTextField extends StatelessWidget {
                   color: Styles.colorTextError,
                 ),
                 fillColor: fillColor ?? Styles.colorBackground,
-                hintStyle: hintTextStyle??Styles.w400TextStyle().copyWith(
-                  fontSize: 16.sp,
-                  color: Styles.colorTextHint,
-                ),
+                hintStyle: hintTextStyle ??
+                    Styles.w400TextStyle().copyWith(
+                      fontSize: 16.sp,
+                      color: Styles.colorTextHint,
+                    ),
                 filled: filled ?? false,
                 border: inputBorder ?? border,
                 errorBorder: errorBorder ?? errorBord,
@@ -184,20 +175,19 @@ class CustomTextField extends StatelessWidget {
                 focusedBorder: borderFocus ?? focusborder,
                 // helperStyle: TextStyle(fontSize: Styles.fontSize25),
 
-                contentPadding:
-
-                isEditeStyle? EdgeInsetsDirectional.only(
-                     end: CommonSizes.SMALL_LAYOUT_W_GAP,
-                     bottom:  CommonSizes.TINY_LAYOUT_W_GAP):
-                contentPaddig ??
-                    EdgeInsetsDirectional.only(
-                        start: CommonSizes.SMALL_LAYOUT_W_GAP,
+                contentPadding: isEditeStyle
+                    ? EdgeInsetsDirectional.only(
                         end: CommonSizes.SMALL_LAYOUT_W_GAP,
-                        top:  CommonSizes.TINY_LAYOUT_W_GAP,
-                        bottom:  CommonSizes.TINY_LAYOUT_W_GAP),
+                        bottom: CommonSizes.TINY_LAYOUT_W_GAP)
+                    : contentPaddig ??
+                        EdgeInsetsDirectional.only(
+                            start: CommonSizes.SMALL_LAYOUT_W_GAP,
+                            end: CommonSizes.SMALL_LAYOUT_W_GAP,
+                            top: CommonSizes.TINY_LAYOUT_W_GAP,
+                            bottom: CommonSizes.TINY_LAYOUT_W_GAP),
                 focusedErrorBorder: inputBorder,
-                 suffixIcon:isEditeStyle?null: suffixIcon,
-                prefixIcon: isEditeStyle?null:prefixIcon),
+                suffixIcon: isEditeStyle ? null : suffixIcon,
+                prefixIcon: isEditeStyle ? null : prefixIcon),
         validator: validator,
         onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         onChanged: onChanged,

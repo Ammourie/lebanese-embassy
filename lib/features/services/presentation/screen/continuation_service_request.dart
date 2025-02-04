@@ -72,7 +72,8 @@ class _ContinuationServiceRequestState
 
   // Data storage
   List<InfoData>? info = []; // Form information
-  FilesModelDataList pikedFiles = FilesModelDataList(files: []); // Selected files
+  FilesModelDataList pikedFiles =
+      FilesModelDataList(files: []); // Selected files
   List<GroupedField> listdataTmp = []; // Temporary grouped fields
   List<GroupedField> listdata1 = []; // Current grouped fields
   List<InfoData> lst1 = []; // Current form data
@@ -417,6 +418,8 @@ class _ContinuationServiceRequestState
       shouldShowDialogConfirm = true;
       _addInfoData();
       _showConfirmationDialog();
+    } else {
+      shouldShowDialogConfirm = false;
     }
   }
 
@@ -472,7 +475,7 @@ class _ContinuationServiceRequestState
 
     info!.addAll(memberGroup);
 
-    if (widget.serviceModelList!.price!.compareTo('0') == 0) {
+    if (widget.serviceModelList!.price!.compareTo('0') != 0) {
       showConnectedPrice = true;
     } else {
       activeStep--;
